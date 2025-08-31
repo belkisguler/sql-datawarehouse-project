@@ -1,8 +1,9 @@
 -- SQL Bulk Insert to load all CSV Files into Bronze Tables 
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS 
 BEGIN
-	DECLARE @start_time DATETIME, @end_time DATETIME; 
+	DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME; 
 	BEGIN TRY
+		SET @batch_start_time = GETDATE();
 		PRINT '======================================================';
 		PRINT 'Loading Bronze Layer';
 		PRINT '======================================================';
@@ -94,8 +95,13 @@ BEGIN
 			TABLOCK 
 		);
 		SET @end_time = GETDATE(); 
-		PRINT '>>> Load Time: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + 'seconds';
+		PRINT '>>> Load Time: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + 'seconds';
 		PRINT '------------------------------------------------------';
+		SET @batch_end_time = GETDATE();
+		PRINT '======================================================';
+		PRINT 'Loading Bronze Layer is completed';
+		PRINT 'Total Load Duration:' + CAST(DATEDIFF(SECOND, @batch_start_time, @batch_end_time) AS NVARCHAR) + 'seconds';
+		PRINT '======================================================';
 	END TRY
 	BEGIN CATCH 
 		PRINT '======================================================';
