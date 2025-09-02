@@ -19,9 +19,7 @@ The goal is to:
 - **Python** for interactive visualizations by utilizing libraries such as **Plolty**, **Pandas**.
 - **Jupyter** notebooks or .py scripts for development
 
-### Project Workflow
-*(Place a diagram under `/diagrams` and reference it here.)*
-
+## Project Workflow
 ```
 [CSV files (ERP, CRM)] --> [Staging tables in SQL Server] --> [Transformation / Cleansing SQL] --> [DW]
                                                              |
@@ -32,7 +30,7 @@ The goal is to:
                                                [Python scripts / Notebooks + Plotly visualizations]
 ```
 
-### Data architecture
+## Data architecture
 The data architecture follows the **Medallion Architecture** with three layers:
 - **Bronze (Raw)** — Ingest raw CSV files into staging or raw bronze tables with minimal transformation. Keep original records for lineage and reprocessing.
 - **Silver (Cleansed / Enriched)** — Clean, standardize, deduplicate and enrich data; validate schema and fix data-quality issues. This layer supports standard analytical queries and lightweight aggregations.
