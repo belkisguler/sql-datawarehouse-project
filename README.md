@@ -45,7 +45,8 @@ data-warehouse-project/
 │   ├── bronze/                         # Scripts for extracting and loading raw data
 │   ├── silver/                         # Scripts for cleaning and transforming data
 │   ├── gold/                           # Scripts for creating analytical models
-│   ├── visualization/                  # Scripts of Data Analysis and Data Visualizations
+│   ├── datavis/                        # Scripts of  Data Visualizations
+│   ├── data-analysis/                   # Scripts of Data Analysis
 │
 ├── README.md                           # Project overview and instructions
 └── LICENSE                             # License information for the repository
