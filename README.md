@@ -1,4 +1,4 @@
-# Data Warehouse and Analtytics Project 
+# Data Warehouse and Analytics Project 
 
 A compact end-to-end data warehousing and analytics example built with Microsoft SQL Server and Python.
 This repository demonstrates how to move data from source CSVs into a data warehouse, clean and integrate data, run analytics with SQL, and create interactive visualizations with Plotly.
