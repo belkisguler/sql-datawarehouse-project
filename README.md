@@ -19,26 +19,18 @@ The goal is to:
 - **Python** for interactive visualizations by utilizing libraries such as **Plolty**, **Pandas**.
 - **Jupyter** notebooks or .py scripts for development
 
-## Project Workflow
-```
-[CSV files (ERP, CRM)] --> [Staging tables in SQL Server] --> [Transformation / Cleansing SQL] --> [DW]
-                                                             |
-                                                             v
-                                                  [SQL analytics queries]
-                                                             |
-                                                             v
-                                               [Python scripts / Notebooks + Plotly visualizations]
-```
 
 ## Data architecture
+### Data sources
+- `erp.csv` — transactional sales and inventory data (ERP)
+- `crm.csv` — customer records and interactions (CRM)
+  
 The data architecture follows the **Medallion Architecture** with three layers:
 - **Bronze (Raw)** — Ingest raw CSV files into staging or raw bronze tables with minimal transformation. Keep original records for lineage and reprocessing.
 - **Silver (Cleansed / Enriched)** — Clean, standardize, deduplicate and enrich data; validate schema and fix data-quality issues. This layer supports standard analytical queries and lightweight aggregations.
 - **Gold (Curated / Business-Ready)** — Final curated tables and aggregates optimized for reporting and dashboards (e.g., dimensional star schema: fact `sales`, dims `customer`, `product`, `date`).
 
-## Data sources
-- `erp.csv` — transactional sales and inventory data (ERP)
-- `crm.csv` — customer records and interactions (CRM)
+![sql-data-arch](https://github.com/user-attachments/assets/b0b5a327-cd07-4902-a9fc-d13976b7892d)
 
 ## Repository Structure 
 ```
@@ -46,25 +38,17 @@ data-warehouse-project/
 │
 ├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
 │
-├── docs/                               # Project documentation and architecture details
-│   ├── etl.drawio                      # Draw.io file shows all different techniquies and methods of ETL
-│   ├── data_architecture.drawio        # Draw.io file shows the project's architecture
-│   ├── data_catalog.md                 # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.drawio                # Draw.io file for the data flow diagram
-│   ├── data_models.drawio              # Draw.io file for data models (star schema)
-│   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
+├── docs/                               # Project architecture details
+│   ├── sql-data-arch.jpg               # Data Archiceture
 │
 ├── scripts/                            # SQL scripts for ETL and transformations
 │   ├── bronze/                         # Scripts for extracting and loading raw data
 │   ├── silver/                         # Scripts for cleaning and transforming data
 │   ├── gold/                           # Scripts for creating analytical models
-│
-├── tests/                              # Test scripts and quality files
+│   ├── visualization/                  # Scripts of Data Analysis and Data Visualizations
 │
 ├── README.md                           # Project overview and instructions
-├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
+└── LICENSE                             # License information for the repository
 ```
 
 ## License
